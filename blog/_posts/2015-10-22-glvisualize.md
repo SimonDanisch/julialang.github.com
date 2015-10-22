@@ -5,21 +5,26 @@
 GLVisualize is an interactive visualization library, which supports 2D and 3D rendering and building of basic GUIs. It's written entirely in Julia and OpenGL.
 I'm really glad that Julia Summer of Code let me continue to work on this project.
 
-During **JSoC**, my main focus was on advancing [GLVisualize](https://github.com/JuliaGL/GLVisualize.jl), but also improving the surrounding infrastructure like [GeometryTypes](https://github.com/JuliaGeometry/GeometryTypes.jl), [FileIO](https://github.com/JuliaIO/FileIO.jl) and [FixedSizeArrays](https://github.com/SimonDanisch/FixedSizeArrays.jl).
+During **JSoC**, my main focus was on advancing [GLVisualize](https://github.com/JuliaGL/GLVisualize.jl), but also improving the surrounding infrastructure like [GeometryTypes](https://github.com/JuliaGeometry/GeometryTypes.jl), [FileIO](https://github.com/JuliaIO/FileIO.jl), [ImageMagick](https://github.com/JuliaIO/ImageMagick.jl), [MeshIO](https://github.com/JuliaIO/MeshIO.jl) and [FixedSizeArrays](https://github.com/SimonDanisch/FixedSizeArrays.jl).
 All recorded gifs suffer from lossy compression and you can click on most of them to see the code that produced them.
 
 One of the most interesting parts of **GLVisualize** is, that it's combining GUIs and visualizations, instead of relying on some 3rd party library like **QT** for GUIs.
 This has many advantages and disadvantages.
 The main advantage is, that interactive visualization share a lot of infrastructure with GUI libraries.
-By combining these two, new features are possible, e.g. text editing of labels in 3D space, or making elements of a visualization work like a button. These features should end up being pretty snappy, since GLVisualize was created with [high performance]() in mind.
-The biggest downside is, that it is really hard to reach the maturity and feature completeness from e.g. **QT**.
-So it is a lot of work, but there is a large potential payoff.
+By combining these two, new features are possible, e.g. text editing of labels in 3D space, or making elements of a visualization work like a button. These features should end up being pretty snappy, since GLVisualize was created with [high performance](http://randomfantasies.com/2015/05/glvisualize-benchmark/) in mind.
 
-What have I been doing during Julia summer of code?
+Obviously, the biggest downside is, that it is really hard to reach the maturity and feature completeness from e.g. **QT**.
+
+So to really get the best of both worlds a lot of work is needed.
+
+So what is the current status of GLVisualize, and what have I been doing during **JSoC**?
+
 A surprisingly large amount of time went into improving FileIO together with [Tim Holy](https://github.com/timholy).
-The selling point of FileIO is, that one can just load a file into FileIO and it will recognize the format and load the respective IO library. This makes it a lot easier to start working with files in Julia, since no prior knowledge is needed.
-This is perfect for a visualization library, since most visualization start from data, maybe of unknown format, serialized on a disk.
-Since all files are loaded via the same function, it also reduces the burden to implement operations like drag and drop.
+The selling point of FileIO is, that one can just load a file into FileIO and it will recognize the format and load the respective IO library. 
+This makes it a lot easier to start working with files in Julia, since no prior knowledge about formats and loading files in Julia is needed.
+This is perfect for a visualization library, since most visualization start from data, that comes in some format, which might even be unknown initially.
+
+Since all files are loaded in the same way, it also reduces the burden to implement operations like drag and drop for all kind of formats.
 To give you an example, the implementation of the drag and drop feature in GLVisualize only needs a [few lines of code](https://gist.github.com/SimonDanisch/e0a8a2cbc3106ce6c123#file-dragndrop-jl) thanks to FileIO:
 
 [![drag and drop](https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/dragndrop2.gif?raw=true)](
@@ -28,7 +33,7 @@ https://gist.github.com/SimonDanisch/e0a8a2cbc3106ce6c123#file-dragndrop-jl
 
 Another feature I've been working on is better 2D support.
 I've implemented different anti-aliased marker, text rendering and line types.
-They all use the [distance field technique](http://www.valvesoftware.com/publications/2007/SIGGRAPH2007_AlphaTestedMagnification.pdf), to achieve view independent anti-aliasing.
+Apart from the image markers, they all use the [distance field technique](http://www.valvesoftware.com/publications/2007/SIGGRAPH2007_AlphaTestedMagnification.pdf), to achieve view independent anti-aliasing.
 Here are a few examples:
 
 ![lines](https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/lines.png?raw=true)
@@ -36,10 +41,12 @@ Here are a few examples:
 https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/marker.jl
 )
 
-In the last example, you notice that all the markers move together. This is actually a cool feature, since they share the same memory for the positions on the GPU without any overhead. I just added an offset for each of the markers.
+In the last example all the markers move together. 
+This is actually one of the core feature of GLVisualize. The markers share the same memory for the positions on the GPU without any overhead. Each marker then just has a different offset to that shared position.
 This is easily achieved in GLVisualize, since all visualization methods are defined on the GPU objects.
+This also works for GPU objects which come from some simulation calculated on the GPU.
 
-There are also some sort of sliders and line editing available with the new version of GLVisualize.
+During JSoC, I also implemented sliders and line editing elements.
 We can use these to add interactivity to parameters of a visualization:
 
 [![line_edit](https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/volume_color.gif?raw=true)](
@@ -54,10 +61,11 @@ I've also worked with [David P. Sanders](https://github.com/dpsanders) to visual
 [![billiard](https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/billiard.gif)](
 https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/billard.jl
 )
+The particle system can use any mesh primitive. To make it easy to load and create meshes, [Steve Kelly]() and I rewrote the [Meshes](https://github.com/JuliaGeometry/Meshes.jl) package to include more features and have a better separation of mesh IO and manipulation. The IO is now in **MeshIO**, which supports the **FileIO** interface. The mesh types are in GeometryTypes and meshing algorithms are in different packages in the [JuliaGeometry](https://github.com/JuliaGeometry) org.
 
-You can see, that there are some GUI elements to interact with the camera.
-The small rectangles on the corner are for switching between orthographic and perspective projection and the cube can be used to center the camera to different sides.
-These kind of gizmos are easy to implement in GLVisualize, since it's build for GUI's and interactivity from the beginning. 
+In this example you can see, that there are also some GUI elements to interact with the camera.
+The small rectangles in the corner are for switching between orthographic and perspective projection and the cube can be used to center the camera to different sides.
+These kind of gizmos are easy to implement in GLVisualize, since it's build for GUI's and interactivity from the beginning.
 Better camera control is a big usability win and I will put more time into improving these even further.
 
 To give you an even better understanding of what is possible with GLVisualize, I recorded one last demo:
