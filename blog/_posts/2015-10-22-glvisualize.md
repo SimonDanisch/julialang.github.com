@@ -29,9 +29,8 @@ Here are a few examples:
 https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/marker.jl
 )
 
-In the last example, you notice that all the markers move together. This is actually a cool feature, since they share the same memory on the GPU without any overhead.
+In the last example, you notice that all the markers move together. This is actually a cool feature, since they share the same memory for the positions on the GPU without any overhead. I just added an offset for each of the markers.
 This is easily achieved in GLVisualize, since all visualization methods are defined on the GPU objects.
-Like this, when you upload e.g. the positions to the GPU, you can reuse them for other visualizations.
 
 There are also some sort of sliders and line editing available with the new version of GLVisualize.
 We can use these to add interactivity to parameters of a visualization:
