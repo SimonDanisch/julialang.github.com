@@ -1,14 +1,19 @@
-This blog post is about my work during Julia summer of code.
-My main focus was on advancing [GLVisualize](https://github.com/JuliaGL/GLVisualize.jl), but also improving the surrounding infrastructure like [GeometryTypes](https://github.com/JuliaGeometry/GeometryTypes.jl), [FileIO](https://github.com/JuliaIO/FileIO.jl) and [FixedSizeArrays](https://github.com/SimonDanisch/FixedSizeArrays.jl).
-All recorded gifs suffer from lossy compression and you can click on most of them to see the code that was needed to generate them.
+# GLVisualize.jl: Interactive Visualizations in Julia
 
-To give you a short intro: GLVisualize is an interactive visualization library, which supports 2D and 3D rendering and building of basic GUIs. It's written entirely in Julia and OpenGL.
+**Simon Danisch**
 
-One of the most interesting parts of GLVisualize is, that it's combining GUIs and visualizations, instead of relying on some library like QT and then doing the visualizations separated from it.
-The reason is, that interactive visualization share a lot of infrastructure also needed for GUIs.
-By combining these two, new features are possible, e.g. text editing of labels in 3D space, or making elements of a visualization work like a button.
-The downside obviously is, that it takes a lot of work to get everything working nicely.
-This is why I'm especially thankful, that I was able to get funding via Julia Summer of Code to continue my work on this project.
+GLVisualize is an interactive visualization library, which supports 2D and 3D rendering and building of basic GUIs. It's written entirely in Julia and OpenGL.
+I'm really glad that Julia Summer of Code let me continue to work on this project.
+
+During **JSoC**, my main focus was on advancing [GLVisualize](https://github.com/JuliaGL/GLVisualize.jl), but also improving the surrounding infrastructure like [GeometryTypes](https://github.com/JuliaGeometry/GeometryTypes.jl), [FileIO](https://github.com/JuliaIO/FileIO.jl) and [FixedSizeArrays](https://github.com/SimonDanisch/FixedSizeArrays.jl).
+All recorded gifs suffer from lossy compression and you can click on most of them to see the code that produced them.
+
+One of the most interesting parts of **GLVisualize** is, that it's combining GUIs and visualizations, instead of relying on some 3rd party library like **QT** for GUIs.
+This has many advantages and disadvantages.
+The main advantage is, that interactive visualization share a lot of infrastructure with GUI libraries.
+By combining these two, new features are possible, e.g. text editing of labels in 3D space, or making elements of a visualization work like a button. These features should end up being pretty snappy, since GLVisualize was created with [high performance]() in mind.
+The biggest downside is, that it is really hard to reach the maturity and feature completeness from e.g. **QT**.
+So it is a lot of work, but there is a large potential payoff.
 
 What have I been doing during Julia summer of code?
 A surprisingly large amount of time went into improving FileIO together with [Tim Holy](https://github.com/timholy).
