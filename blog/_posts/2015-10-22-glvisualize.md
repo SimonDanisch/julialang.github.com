@@ -11,7 +11,7 @@ The downside obviously is, that it takes a lot of work to get everything working
 This is why I'm especially thankful, that I was able to get funding via Julia Summer of Code to continue my work on this project.
 
 What have I been doing during Julia summer of code?
-A surprisingly large amount of time went into improving together with [Tim Holy](https://github.com/timholy).
+A surprisingly large amount of time went into improving FileIO together with [Tim Holy](https://github.com/timholy).
 The selling point of FileIO is, that one can just load a file into FileIO and it will recognize the format and load the respective IO library. This makes it a lot easier to start working with files in Julia, since no prior knowledge is needed.
 This is perfect for a visualization library, since most visualization start from data, maybe of unknown format, serialized on a disk.
 Since all files are loaded via the same function, it also reduces the burden to implement operations like drag and drop.
