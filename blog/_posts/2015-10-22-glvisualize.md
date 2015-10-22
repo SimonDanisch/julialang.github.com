@@ -17,7 +17,7 @@ Obviously, the biggest downside is, that it is really hard to reach the maturity
 
 So to really get the best of both worlds a lot of work is needed.
 
-So what is the current status of GLVisualize, and what have I been doing during **JSoC**?
+## Current status of GLVisualize, and what I've been doing during **JSoC**
 
 A surprisingly large amount of time went into improving FileIO together with [Tim Holy](https://github.com/timholy).
 The selling point of FileIO is, that one can just load a file into FileIO and it will recognize the format and load the respective IO library. 
