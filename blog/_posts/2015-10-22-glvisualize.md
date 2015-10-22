@@ -17,7 +17,9 @@ This is perfect for a visualization library, since most visualization start from
 Since all files are loaded via the same function, it also reduces the burden to implement operations like drag and drop.
 To give you an example, the implementation of the drag and drop feature in GLVisualize only needs a [few lines of code](https://gist.github.com/SimonDanisch/e0a8a2cbc3106ce6c123#file-dragndrop-jl) thanks to FileIO:
 
-![drag and drop](https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/dragndrop2.gif?raw=true)
+[![drag and drop](https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/dragndrop2.gif?raw=true)](
+https://gist.github.com/SimonDanisch/e0a8a2cbc3106ce6c123#file-dragndrop-jl
+)
 
 Another feature I've been working on is better 2D support.
 I've implemented different anti-aliased marker, text rendering and line types.
