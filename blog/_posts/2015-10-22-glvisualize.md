@@ -11,7 +11,7 @@ All recorded gifs suffer from lossy compression and you can click on most of the
 One of the most interesting parts of **GLVisualize** is, that it's combining GUIs and visualizations, instead of relying on some 3rd party library like **QT** for GUIs.
 This has many advantages and disadvantages.
 The main advantage is, that interactive visualization share a lot of infrastructure with GUI libraries.
-By combining these two, new features are possible, e.g. text editing of labels in 3D space, or making elements of a visualization work like a button. These features should end up being pretty snappy, since GLVisualize was created with [high performance](http://randomfantasies.com/2015/05/glvisualize-benchmark/) in mind.
+By combining these two, new features are possible, e.g. text editing of labels in 3D space, or making elements of a visualization work like a button. These features should end up being pretty snappy, since **GLVisualize** was created with [high performance](http://randomfantasies.com/2015/05/glvisualize-benchmark/) in mind.
 
 Obviously, the biggest downside is, that it is really hard to reach the maturity and feature completeness from e.g. **QT**.
 
@@ -25,7 +25,7 @@ This makes it a lot easier to start working with files in Julia, since no prior 
 This is perfect for a visualization library, since most visualization start from data, that comes in some format, which might even be unknown initially.
 
 Since all files are loaded in the same way, it also reduces the burden to implement operations like drag and drop for all kind of formats.
-To give you an example, the implementation of the drag and drop feature in GLVisualize only needs a [few lines of code](https://gist.github.com/SimonDanisch/e0a8a2cbc3106ce6c123#file-dragndrop-jl) thanks to FileIO:
+To give you an example, the implementation of the drag and drop feature in **GLVisualize** only needs a [few lines of code](https://gist.github.com/SimonDanisch/e0a8a2cbc3106ce6c123#file-dragndrop-jl) thanks to FileIO:
 
 [![drag and drop](https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/dragndrop2.gif?raw=true)](
 https://gist.github.com/SimonDanisch/e0a8a2cbc3106ce6c123#file-dragndrop-jl
@@ -65,7 +65,7 @@ The particle system can use any mesh primitive. To make it easy to load and crea
 
 In this example you can see, that there are also some GUI elements to interact with the camera.
 The small rectangles in the corner are for switching between orthographic and perspective projection and the cube can be used to center the camera to different sides.
-These kind of gizmos are easy to implement in GLVisualize, since it's build for GUI's and interactivity from the beginning.
+These kind of gizmos are easy to implement in **GLVisualize**, since it's build for GUI's and interactivity from the beginning.
 Better camera control is a big usability win and I will put more time into improving these even further.
 
 To give you an even better understanding of what is possible with **GLVisualize**, I recorded one last demo:
@@ -75,8 +75,8 @@ To give you an even better understanding of what is possible with **GLVisualize*
 It shows different kind of animations, 3D text editing and pop ups, which are all relatively easy to include in any visualization created with **GLVisualize**.
 
 This might look very promising, but there is still a lot of work needed!
-First of all, there is still no tagged version of GLVisualize that will just install.
-[Reactive.jl](https://github.com/JuliaLang/Reactive.jl) and [Images.jl](https://github.com/timholy/Images.jl) are currently not tagged on a version that works with GLVisualize.
+First of all, there is still no tagged version of **GLVisualize** that will just install.
+[Reactive.jl](https://github.com/JuliaLang/Reactive.jl) and [Images.jl](https://github.com/timholy/Images.jl) are currently not tagged on a version that works with **GLVisualize**.
 
 On the other side, the API is not that thought out yet.
 It is planned to use more ideas from [Escher.jl](https://github.com/shashi/Escher.jl) and [Compose.jl](https://github.com/dcjones/Compose.jl) to improve the API.
