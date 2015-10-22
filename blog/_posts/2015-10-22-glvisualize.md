@@ -58,13 +58,13 @@ To give you an even better understanding of what is possible with GLVisualize, I
 
 It shows different kind of animations, 3D text editing and pop ups, which are all relatively easy to implement with GLVisualize editing primitives.
 
-This might look very promising, but there is still a lot of work!
-First of all, there is still not a tagged version of GLVisualize that will just install.
-[Reactive.jl](https://github.com/JuliaLang/Reactive.jl) and [Images.jl](https://github.com/timholy/Images.jl) are still not tagged on a version that works with GLVisualize.
+This might look very promising, but there is still a lot of work needed!
+First of all, there is still no tagged version of GLVisualize that will just install.
+[Reactive.jl](https://github.com/JuliaLang/Reactive.jl) and [Images.jl](https://github.com/timholy/Images.jl) are currently not tagged on a version that works with GLVisualize.
 
 On the other side, the API is not that thought out yet.
 It is planned to use more ideas from [Escher.jl](https://github.com/shashi/Escher.jl) and [Compose.jl](https://github.com/dcjones/Compose.jl) to improve the API.
 The goal is, to fully support the Compose interface at some point.
 Like that, GLVisualize can be used as a backend for Gadfly. This will make Gadfly much fitter for large, animated data sets.
 In the next weeks, I will need to work on tutorials, documentations and handling edge cases better.
-Stay tuned for updates!
+Stay tuned for updates and thanks to the Julia team and everyone involved to make this possible!
