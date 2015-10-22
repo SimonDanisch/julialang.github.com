@@ -61,7 +61,7 @@ I've also worked with [David P. Sanders](https://github.com/dpsanders) to visual
 [![billiard](https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/billiard.gif)](
 https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/billard.jl
 )
-The particle system can use any mesh primitive. To make it easy to load and create meshes, [Steve Kelly]() and I rewrote the [Meshes](https://github.com/JuliaGeometry/Meshes.jl) package to include more features and have a better separation of mesh IO and manipulation. The IO is now in **MeshIO**, which supports the **FileIO** interface. The mesh types are in GeometryTypes and meshing algorithms are in different packages in the [JuliaGeometry](https://github.com/JuliaGeometry) org.
+The particle system can use any mesh primitive. To make it easy to load and create meshes, [Steve Kelly](https://github.com/sjkelly) and I rewrote the [Meshes](https://github.com/JuliaGeometry/Meshes.jl) package to include more features and have a better separation of mesh IO and manipulation. The IO is now in **MeshIO**, which supports the **FileIO** interface. The mesh types are in GeometryTypes and meshing algorithms are in different packages in the [JuliaGeometry](https://github.com/JuliaGeometry) org.
 
 In this example you can see, that there are also some GUI elements to interact with the camera.
 The small rectangles in the corner are for switching between orthographic and perspective projection and the cube can be used to center the camera to different sides.
