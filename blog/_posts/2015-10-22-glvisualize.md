@@ -19,8 +19,8 @@ So to really get the best of both worlds a lot of work is needed.
 
 ## Current status of GLVisualize, and what I've been doing during **JSoC**
 
-A surprisingly large amount of time went into improving FileIO together with [Tim Holy](https://github.com/timholy).
-The selling point of FileIO is, that one can just load a file into FileIO and it will recognize the format and load the respective IO library. 
+A surprisingly large amount of time went into improving **FileIO** together with [Tim Holy](https://github.com/timholy).
+The selling point of **FileIO** is, that one can just load a file into **FileIO** and it will recognize the format and load the respective IO library. 
 This makes it a lot easier to start working with files in Julia, since no prior knowledge about formats and loading files in Julia is needed.
 This is perfect for a visualization library, since most visualization start from data, that comes in some format, which might even be unknown initially.
 
@@ -42,11 +42,11 @@ https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/marker.jl
 )
 
 In the last example all the markers move together. 
-This is actually one of the core feature of GLVisualize. The markers share the same memory for the positions on the GPU without any overhead. Each marker then just has a different offset to that shared position.
-This is easily achieved in GLVisualize, since all visualization methods are defined on the GPU objects.
+This is actually one of the core feature of **GLVisualize**. The markers share the same memory for the positions on the GPU without any overhead. Each marker then just has a different offset to that shared position.
+This is easily achieved in **GLVisualize**, since all visualization methods are defined on the GPU objects.
 This also works for GPU objects which come from some simulation calculated on the GPU.
 
-During JSoC, I also implemented sliders and line editing elements.
+During **JSoC**, I also implemented sliders and line editing elements.
 We can use these to add interactivity to parameters of a visualization:
 
 [![line_edit](https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/volume_color.gif?raw=true)](
@@ -68,11 +68,11 @@ The small rectangles in the corner are for switching between orthographic and pe
 These kind of gizmos are easy to implement in GLVisualize, since it's build for GUI's and interactivity from the beginning.
 Better camera control is a big usability win and I will put more time into improving these even further.
 
-To give you an even better understanding of what is possible with GLVisualize, I recorded one last demo:
+To give you an even better understanding of what is possible with **GLVisualize**, I recorded one last demo:
 
 ![interactivity](https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/interactivity.gif?raw=true)
 
-It shows different kind of animations, 3D text editing and pop ups, which are all relatively easy to implement with GLVisualize editing primitives.
+It shows different kind of animations, 3D text editing and pop ups, which are all relatively easy to include in any visualization created with **GLVisualize**.
 
 This might look very promising, but there is still a lot of work needed!
 First of all, there is still no tagged version of GLVisualize that will just install.
@@ -81,6 +81,6 @@ First of all, there is still no tagged version of GLVisualize that will just ins
 On the other side, the API is not that thought out yet.
 It is planned to use more ideas from [Escher.jl](https://github.com/shashi/Escher.jl) and [Compose.jl](https://github.com/dcjones/Compose.jl) to improve the API.
 The goal is, to fully support the Compose interface at some point.
-Like that, GLVisualize can be used as a backend for Gadfly. This will make Gadfly much fitter for large, animated data sets.
+Like that, **GLVisualize** can be used as a backend for [Gadfly](https://github.com/dcjones/Gadfly.jl). This will make **Gadfly** much fitter for large, animated data sets.
 In the next weeks, I will need to work on tutorials, documentations and handling edge cases better.
 Stay tuned for updates and thanks to the Julia team and everyone involved to make this possible!
