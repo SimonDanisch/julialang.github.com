@@ -49,6 +49,7 @@ https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/billard.jl
 )
 
 You can see, that there are some GUI elements to interact with the camera.
+The small rectangles on the corner are for switching between orthographic and perspective projection and the cube can be used to center the camera to different sides.
 These kind of gizmos are easy to implement in GLVisualize, since it's build for GUI's and interactivity from the beginning. 
 Better camera control is a big usability win and I will put more time into improving these even further.
 
