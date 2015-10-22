@@ -4,7 +4,7 @@ All recorded gifs suffer from lossy compression and you can click on most of the
 
 To give you a short intro: GLVisualize is an interactive visualization library, which supports 2D and 3D rendering and building of basic GUIs. It's written entirely in Julia and OpenGL.
 
-One of the most interesting parts of GLVisualize is, that it's combining GUIs and visualizations, instead of relying on some library like QT and then doing the visualizations seperated from it.
+One of the most interesting parts of GLVisualize is, that it's combining GUIs and visualizations, instead of relying on some library like QT and then doing the visualizations separated from it.
 The reason is, that interactive visualization share a lot of infrastructure also needed for GUIs.
 By combining these two, new features are possible, e.g. text editing of labels in 3D space, or making elements of a visualization work like a button.
 The downside obviously is, that it takes a lot of work to get everything working nicely.
@@ -21,7 +21,7 @@ To give you an example, the implementation of the drag and drop feature in GLVis
 
 Another feature I've been working on is better 2D support.
 I've implemented different anti-aliased marker, text rendering and line types.
-They all use the [distance field technique](http://www.valvesoftware.com/publications/2007/SIGGRAPH2007_AlphaTestedMagnification.pdf), to achieve view independant anti-aliasing.
+They all use the [distance field technique](http://www.valvesoftware.com/publications/2007/SIGGRAPH2007_AlphaTestedMagnification.pdf), to achieve view independent anti-aliasing.
 Here are a few examples:
 
 ![lines](https://github.com/SimonDanisch/Blog/blob/master/10-22-15-jsoc/lines.png?raw=true)
